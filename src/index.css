@@ -14,11 +14,14 @@ body {
 @theme{
   --color-primary-purple: #5A67BA;
   --color-primary-purple-50: #F1F2F7;
+  --color-primary-purple-100: #F6F6FB;
+  --color-primary-purple-200: #1F384C;
   --color-primary-active-bg: #707FDD;
   --color-primary-active-text: #5A6ACF;
   --color-primary-inactive-text: #273240;
   --color-primary-blue: #082431;
   --color-border-gray: #C8CBD9;
+  --color-secondary-yellow: #FFE6CC;
 }
 
 

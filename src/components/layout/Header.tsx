@@ -1,11 +1,14 @@
+import searchBar from "../../assets/icons/Icon.svg";
+import burger from "../../assets/icons/Emoticon.png";
+import notification from "../../assets/icons/Notif Icon.svg";
 interface HeaderProps {
   onMenuToggle: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
   return (
-    <header className="sticky top-0 right-0 bg-white border-b border-slate-200 z-30">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
+    <header className="sticky top-0 right-0 bg-white border-b-[0.5px] border-border-gray z-30 h-16">
+      <div className="mx-auto h-16 w-full max-w-7xl px-4 sm:px-6 lg:px-8  flex items-center gap-4">
         {/* Mobile Menu Toggle */}
         <button
           onClick={onMenuToggle}
@@ -28,61 +31,37 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
         </button>
 
         {/* Search Bar */}
-        <div className="hidden sm:flex flex-1">
-          <div className="relative w-full max-w-2xl">
+        <div className="hidden sm:flex flex-1 ">
+          <div className="relative w-full max-w-2xl h-8">
             <input
               type="text"
               placeholder="Search"
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300"
+              className="w-full pl-5 pr-4 h-full rounded-[5px] bg-primary-purple-100 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-primary-active-bg placeholder:text-primary-purple-200/30"
             />
-            <svg
-              className="absolute left-3 top-3 w-5 h-5 text-slate-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-primary-purple-200  ">
+              <img
+                src={searchBar}
+                alt="Search icon"
+                width={16}
+                height={16}
+                className="hover:scale-110 cursor-pointer"
               />
-            </svg>
+            </span>
           </div>
         </div>
 
         {/* Right Actions */}
         <div className="flex items-center gap-3 ml-auto">
-          {/* Notification Bell */}
-          <button
-            className="p-2 hover:bg-slate-100 rounded-lg transition-colors relative"
-            aria-label="Notifications"
-          >
-            <svg
-              className="w-6 h-6 text-gray-700"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-          </button>
+          <div className="w-8 h-8 rounded-full bg-secondary-yellow flex items-center justify-center text-base">
+            <img src={burger} alt="burger" />
+          </div>
 
           {/* Profile */}
           <button
             className="flex items-center gap-3 px-2 py-1.5 hover:bg-slate-100 rounded-lg transition-colors"
             aria-label="Account menu"
           >
-            <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-base">
-              🍔
-            </div>
-            <p className="hidden sm:block text-sm font-semibold text-slate-900">
+            <p className="hidden sm:block text-sm font-semibold text-primary-purple-200">
               Delicious Burger
             </p>
             <svg
@@ -98,6 +77,16 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
                 d="M19 9l-7 7-7-7"
               />
             </svg>
+          </button>
+
+          {/* Notification Bell */}
+          <button
+            className="p-2 hover:bg-slate-100 rounded-lg transition-colors relative"
+            aria-label="Notifications"
+          >
+            <img src={notification} alt="Notification bell" />
+
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 border border-white bg-red-500 rounded-full" />
           </button>
         </div>
       </div>
