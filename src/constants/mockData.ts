@@ -16,6 +16,11 @@ import customerReview from "../assets/icons/Chat.svg";
 import manage from "../assets/icons/Document.svg";
 import food from "../assets/icons/Buy.svg";
 
+import freshSalad from "../assets/icons/fresh.svg";
+import chickenNoodles from "../assets/icons/chicken.svg";
+import smoothie from "../assets/icons/smoothie.svg";
+import chickenWings from "../assets/icons/hotchiken.svg";
+
 export const MENU_ITEMS: MenuItem[] = [
   {
     id: "dashboard",
@@ -111,25 +116,25 @@ export const MOST_ORDERED_FOODS: FoodItem[] = [
     id: "1",
     name: "Fresh Salad Bowl",
     price: 45000,
-    image: "🥗",
+    image: freshSalad,
   },
   {
     id: "2",
     name: "Chicken Noodles",
     price: 75000,
-    image: "🍜",
+    image: chickenNoodles,
   },
   {
     id: "3",
     name: "Smoothie Fruits",
     price: 45000,
-    image: "🥤",
+    image: smoothie,
   },
   {
     id: "4",
     name: "Hot Chicken Wings",
     price: 45000,
-    image: "🍗",
+    image: chickenWings,
   },
 ];
 
