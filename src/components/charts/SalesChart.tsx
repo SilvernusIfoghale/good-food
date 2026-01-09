@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 
-import type { SalesData } from "../../types";
+import { ViewReportButton } from "../common/ViewReportButton";
 import { ArrowDown, ArrowUp } from "lucide-react";
 
 interface SalesChartProps {
@@ -65,9 +65,7 @@ export const SalesChart: React.FC<SalesChartProps> = ({
           </p>
         </div>
 
-        <button className="text-[12px] text-primary-active-text font-medium bg-button-bg border-button-border rounded-[5px] h-8 w-27.25 text-center hover:bg-white border-[0.5px] hover:border-gray-300 transition-colors cursor-pointer px-3 py-1.5">
-          View Report
-        </button>
+        <ViewReportButton />
       </div>
 
       <p className="text-[13px] text-light-gray mt-4 mb-4">{dateRange}</p>

@@ -9,6 +9,7 @@ import {
 
 import type { OrderTimeMetric } from "../../types";
 import { useState } from "react";
+import { ViewReportButton } from "../common/ViewReportButton";
 
 interface OrderTimeChartProps {
   data: OrderTimeMetric[];
@@ -118,9 +119,7 @@ export const OrderTimeChart: React.FC<OrderTimeChartProps> = ({ data }) => {
           <h3 className="text-black text-[14px]">Order Time</h3>
           <p className="text-[13px] text-light-gray mt-1">From 1-6 Dec, 2020</p>
         </div>
-        <button className="text-[12px] text-primary-active-text font-medium bg-button-bg border-button-border rounded-[5px] h-8 w-27.25 text-center hover:bg-white border-[0.5px] hover:border-gray-300 transition-colors cursor-pointer px-3 py-1.5">
-          View Report
-        </button>
+        <ViewReportButton />
       </div>
 
       <div className="flex flex-col items-center">

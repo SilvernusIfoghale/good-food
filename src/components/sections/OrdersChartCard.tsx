@@ -12,6 +12,7 @@ import {
 
 import type { OrdersSeriesPoint } from "../../types";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import { ViewReportButton } from "../common/ViewReportButton";
 
 interface OrdersChartCardProps {
   title: string;
@@ -58,9 +59,7 @@ export const OrdersChartCard: React.FC<OrdersChartCardProps> = ({
         <div>
           <h3 className="text-black text-[14px] font-normal">{title}</h3>
         </div>
-        <button className="text-[12px] text-primary-active-text font-medium bg-button-bg border-button-border rounded-[5px] h-8 w-27.25 text-center hover:bg-white border-[0.5px] hover:border-gray-300 transition-colors cursor-pointer px-3 py-1.5">
-          View Report
-        </button>
+        <ViewReportButton />
       </div>
 
       <div className="mb-6">

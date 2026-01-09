@@ -38,9 +38,10 @@ export const Dashboard = () => {
               </h1>
             </div>
 
-            {/* Charts Row */}
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6 lg:border-b-[0.5px]  border-border-gray pb-10 ">
-              <div className="xl:col-span-2 min-w-0">
+            {/* Dashboard Content Grid */}
+            <div className="grid grid-cols-1 xl:grid-cols-3">
+              {/* Top Row */}
+              <div className="xl:col-span-2 min-w-0 border-b-[0.5px] border-border-gray pb-10 pr-0 xl:pr-6">
                 <SalesChart
                   data={SALES_DATA}
                   amount={DASHBOARD_STATS.revenue}
@@ -48,24 +49,22 @@ export const Dashboard = () => {
                   dateRange={DASHBOARD_STATS.dateRange}
                 />
               </div>
-              <div className="xl:col-span-1 min-w-0 lg:border-l-[0.5px]  border-border-gray pl-10">
+              <div className="xl:col-span-1 min-w-0 border-b-[0.5px] xl:border-l-[0.5px] border-border-gray pl-0 xl:pl-10 pb-10">
                 <OrderTimeChart data={ORDER_TIME_METRICS} />
               </div>
-            </div>
 
-            {/* Bottom Row - Rating and Most Ordered */}
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-              <div className="xl:col-span-1 min-w-0">
+              {/* Bottom Row */}
+              <div className="xl:col-span-1 min-w-0 pr-0 xl:pr-6 pt-10 border-b-[0.5px] xl:border-b-0 border-border-gray pb-10 xl:pb-0">
                 <RatingChart
                   metrics={RATING_METRICS}
                   title="Your Rating"
                   description="Lorem ipsum dolor sit amet, consectetur"
                 />
               </div>
-              <div className="xl:col-span-1 min-w-0">
+              <div className="xl:col-span-1 min-w-0 px-0 xl:px-6 pt-10 border-b-[0.5px] xl:border-b-0 border-border-gray pb-10 xl:pb-0">
                 <MostOrderedFoods foods={MOST_ORDERED_FOODS} />
               </div>
-              <div className="xl:col-span-1 min-w-0 lg:border-l-[0.5px]  border-border-gray pl-10">
+              <div className="xl:col-span-1 min-w-0 pl-0 xl:pl-10 pt-10 border-b-[0.5px] xl:border-b-0 xl:border-l-[0.5px] border-border-gray pb-10 xl:pb-0">
                 <OrdersChartCard
                   title="Order"
                   value={DASHBOARD_STATS.orders}
