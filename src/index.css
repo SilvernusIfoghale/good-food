@@ -28,8 +28,10 @@ body {
   --color-button-border: #DDE4F0;
   --color-grid-line: #E2E7E7;
   --color-tertiary-green: #149D52;
+  --color-tertiary-red: #F2383A;
   --color-tag-brown: #121212;
   --color-tooltip-bg: #37375C;
+  --color-graph-line: #E6E8EC;
 }
 
 

@@ -1,15 +1,17 @@
 import {
-  CartesianGrid,
-  Legend,
   Line,
   LineChart,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
+  CartesianGrid,
+  Legend,
 } from "recharts";
 
 import type { OrdersSeriesPoint } from "../../types";
+import { ArrowDown, ArrowUp } from "lucide-react";
 
 interface OrdersChartCardProps {
   title: string;
@@ -20,14 +22,9 @@ interface OrdersChartCardProps {
 }
 
 const formatCompact = (value: number) => {
-  const hasThousands = value >= 1000;
-  if (!hasThousands) return value.toString();
-
-  const formatted = new Intl.NumberFormat("id-ID", {
+  return new Intl.NumberFormat("id-ID", {
     maximumFractionDigits: 0,
   }).format(value);
-
-  return formatted;
 };
 
 export const OrdersChartCard: React.FC<OrdersChartCardProps> = ({
@@ -38,62 +35,89 @@ export const OrdersChartCard: React.FC<OrdersChartCardProps> = ({
   data,
 }) => {
   const isPositive = change >= 0;
+  const minValue = Math.min(
+    ...data.flatMap((d) => [d.current || 0, d.previous || 0])
+  );
+  const maxValue = Math.max(
+    ...data.flatMap((d) => [d.current || 0, d.previous || 0])
+  );
+
+  const gridTicks = [
+    Math.ceil(minValue + (maxValue - minValue) * 0.15),
+    Math.ceil(minValue + (maxValue - minValue) * 0.5),
+    Math.ceil(minValue + (maxValue - minValue) * 0.85),
+  ];
 
   const legendFormatter = (value: string) => (
-    <span className="text-xs text-slate-500">{value}</span>
+    <span className="text-[14px] text-gray-500 font-medium ml-1">{value}</span>
   );
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+    <div className="bg-white rounded-2xl p-6 ">
       <div className="flex items-start justify-between gap-4 mb-4">
         <div>
-          <h3 className="text-gray-900 font-semibold">{title}</h3>
+          <h3 className="text-black text-[14px] font-normal">{title}</h3>
         </div>
-        <button className="text-xs font-medium text-indigo-600 hover:text-indigo-700 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-white">
+        <button className="text-[12px] text-primary-active-text font-medium bg-button-bg border-button-border rounded-[5px] h-8 w-27.25 text-center hover:bg-white border-[0.5px] hover:border-gray-300 transition-colors cursor-pointer px-3 py-1.5">
           View Report
         </button>
       </div>
 
-      <div className="mb-4">
-        <p className="text-3xl font-bold text-gray-900">
+      <div className="mb-6">
+        <p className="text-[20px] font-medium text-black leading-none">
           {formatCompact(value)}
         </p>
         <p
-          className={`text-sm font-medium mt-2 flex items-center gap-1 ${
-            isPositive ? "text-green-600" : "text-red-600"
+          className={`text-[12px] font-semibold mt-3 flex items-center gap-1 ${
+            isPositive ? "text-tertiary-green" : "text-tertiary-red"
           }`}
         >
-          <span>{isPositive ? "▲" : "▼"}</span>
-          {Math.abs(change).toFixed(1)}% vs last week
+          <span>
+            {isPositive ? <ArrowUp width={15} /> : <ArrowDown width={15} />}
+          </span>
+          {Math.abs(change).toFixed(1)}%
+          <span className="text-light-gray font-normal"> vs last week</span>
         </p>
-        <p className="text-xs text-gray-500 mt-2">{dateRange}</p>
+        <p className="text-[13px] text-light-gray mt-6">
+          Sales from {dateRange}
+        </p>
       </div>
 
-      <div className="h-44 w-full min-w-0">
+      <div className="h-48 w-full min-w-0">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 8, right: 8, left: -12, bottom: 0 }}
+            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
           >
             <CartesianGrid
-              strokeDasharray="4 4"
-              stroke="#E5E7EB"
               vertical={false}
+              strokeDasharray="4 4"
+              stroke="var(--color-grid-line)"
             />
             <XAxis
               dataKey="date"
               tickLine={false}
               axisLine={false}
-              tick={{ fontSize: 12, fill: "#6B7280" }}
+              tick={{ fontSize: 12, fill: "var(--color-light-gray)" }}
               tickFormatter={(v) => String(v).padStart(2, "0")}
+              padding={{ left: 10, right: 10 }}
             />
-            <YAxis hide />
+            <YAxis
+              hide
+              domain={[minValue - 50, maxValue + 50]}
+              ticks={gridTicks}
+            />
+            <ReferenceLine
+              y={minValue - 50}
+              stroke="var(--color-grid-line)"
+              strokeWidth={1}
+            />
             <Tooltip
-              cursor={{ stroke: "#E5E7EB" }}
+              cursor={{ stroke: "var(--color-grid-line)", strokeWidth: 1 }}
               contentStyle={{
                 borderRadius: 12,
-                border: "1px solid #E5E7EB",
-                boxShadow: "0 10px 20px rgba(0,0,0,0.06)",
+                border: "1px solid var(--color-grid-line)",
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
               }}
               labelFormatter={(v) => `Day ${String(v).padStart(2, "0")}`}
             />
@@ -101,26 +125,37 @@ export const OrdersChartCard: React.FC<OrdersChartCardProps> = ({
               verticalAlign="bottom"
               align="left"
               iconType="circle"
+              iconSize={8}
               formatter={legendFormatter}
-              wrapperStyle={{ paddingTop: 6 }}
+              wrapperStyle={{ paddingTop: 20 }}
             />
             <Line
               type="linear"
               dataKey="current"
               name="Last 6 days"
-              stroke="#4F46E5"
-              strokeWidth={2}
+              stroke="var(--color-primary-active-text)"
+              strokeWidth={3}
               dot={false}
-              activeDot={{ r: 4 }}
+              activeDot={{
+                r: 5,
+                fill: "var(--color-primary-active-text)",
+                stroke: "#fff",
+                strokeWidth: 2,
+              }}
             />
             <Line
               type="linear"
               dataKey="previous"
               name="Last Week"
-              stroke="#D1D5DB"
+              stroke="var(--color-graph-line)"
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 4 }}
+              activeDot={{
+                r: 4,
+                fill: "var(--color-graph-line)",
+                stroke: "#fff",
+                strokeWidth: 2,
+              }}
             />
           </LineChart>
         </ResponsiveContainer>

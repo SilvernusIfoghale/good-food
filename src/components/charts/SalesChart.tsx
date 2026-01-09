@@ -54,10 +54,12 @@ export const SalesChart: React.FC<SalesChartProps> = ({
           </p>
           <p
             className={`text-[12px] font-semibold mt-2 flex items-center gap-1 ${
-              isPositive ? "text-tertiary-green" : "text-red-600"
+              isPositive ? "text-tertiary-green" : "text-tertiary-red"
             }`}
           >
-            <span>{isPositive ? <ArrowUp width={17} /> : <ArrowDown />}</span>
+            <span>
+              {isPositive ? <ArrowUp width={16} /> : <ArrowDown width={16} />}
+            </span>
             {Math.abs(change).toFixed(1)}%{" "}
             <span className="text-light-gray">vs last week</span>
           </p>

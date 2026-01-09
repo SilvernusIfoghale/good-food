@@ -86,12 +86,12 @@ export const SALES_DATA: SalesData[] = [
 ];
 
 export const ORDERS_DATA: OrdersSeriesPoint[] = [
-  { date: 1, current: 420, previous: 520 },
-  { date: 2, current: 360, previous: 480 },
-  { date: 3, current: 520, previous: 560 },
-  { date: 4, current: 480, previous: 540 },
-  { date: 5, current: 390, previous: 500 },
-  { date: 6, current: 680, previous: 540 },
+  { date: 1, current: 320, previous: 450 },
+  { date: 2, current: 280, previous: 580 },
+  { date: 3, current: 520, previous: 300 },
+  { date: 4, current: 480, previous: 560 },
+  { date: 5, current: 350, previous: 480 },
+  { date: 6, current: 750, previous: 520 },
 ];
 
 export const ORDER_TIME_METRICS: OrderTimeMetric[] = [
