@@ -106,9 +106,9 @@ export const ORDER_TIME_METRICS: OrderTimeMetric[] = [
 ];
 
 export const RATING_METRICS: RatingMetric[] = [
-  { label: "Hygiene", value: 85, color: "#6366F1" },
-  { label: "Food Taste", value: 85, color: "#F59E0B" },
-  { label: "Packaging", value: 92, color: "#10B981" },
+  { label: "Hygiene", value: 85, color: "rgba(100, 99, 214, 0.9)" },
+  { label: "Food Taste", value: 85, color: "rgba(255, 171, 81, 0.9)" },
+  { label: "Packaging", value: 92, color: "rgba(70, 199, 226, 0.9)" },
 ];
 
 export const MOST_ORDERED_FOODS: FoodItem[] = [
