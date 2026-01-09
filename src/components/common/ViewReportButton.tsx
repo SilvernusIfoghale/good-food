@@ -1,9 +1,8 @@
 import React from "react";
 
-interface ViewReportButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
-export const ViewReportButton: React.FC<ViewReportButtonProps> = (props) => {
+export const ViewReportButton: React.FC<
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+> = (props) => {
   return (
     <button
       {...props}

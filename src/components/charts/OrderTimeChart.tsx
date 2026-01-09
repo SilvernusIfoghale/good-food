@@ -51,7 +51,15 @@ const OrderTimeTooltip = ({
   );
 };
 
-const renderActiveShape = (props: any) => {
+const renderActiveShape = (props: {
+  cx: number;
+  cy: number;
+  innerRadius: number;
+  outerRadius: number;
+  startAngle: number;
+  endAngle: number;
+  fill: string;
+}) => {
   const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } =
     props;
 

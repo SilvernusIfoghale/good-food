@@ -13,6 +13,12 @@ import {
 import { ViewReportButton } from "../common/ViewReportButton";
 import { ArrowDown, ArrowUp } from "lucide-react";
 
+interface SalesData {
+  date: string | number;
+  lastDays: number;
+  lastWeek: number;
+}
+
 interface SalesChartProps {
   data: SalesData[];
   amount: number;
