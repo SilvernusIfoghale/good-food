@@ -19,7 +19,7 @@ export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-white">
       {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
@@ -33,11 +33,13 @@ export const Dashboard = () => {
           <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
             {/* Page Title */}
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+              <h1 className="text-[18px] font-medium text-primary-purple-200">
+                Dashboard
+              </h1>
             </div>
 
             {/* Charts Row */}
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6 lg:border-b-[0.5px]  border-border-gray pb-10 ">
               <div className="xl:col-span-2 min-w-0">
                 <SalesChart
                   data={SALES_DATA}
@@ -46,7 +48,7 @@ export const Dashboard = () => {
                   dateRange={DASHBOARD_STATS.dateRange}
                 />
               </div>
-              <div className="xl:col-span-1 min-w-0">
+              <div className="xl:col-span-1 min-w-0 lg:border-l-[0.5px]  border-border-gray pl-10">
                 <OrderTimeChart data={ORDER_TIME_METRICS} />
               </div>
             </div>
@@ -63,7 +65,7 @@ export const Dashboard = () => {
               <div className="xl:col-span-1 min-w-0">
                 <MostOrderedFoods foods={MOST_ORDERED_FOODS} />
               </div>
-              <div className="xl:col-span-1 min-w-0">
+              <div className="xl:col-span-1 min-w-0 lg:border-l-[0.5px]  border-border-gray pl-10">
                 <OrdersChartCard
                   title="Order"
                   value={DASHBOARD_STATS.orders}

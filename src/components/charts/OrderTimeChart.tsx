@@ -26,7 +26,7 @@ const OrderTimeTooltip = ({
   const count = item?.count ?? 0;
 
   return (
-    <div className="bg-slate-900 text-white rounded-xl px-4 py-3 shadow-lg min-w-44">
+    <div className="bg-slate-900 text-white  px-4 py-3 min-w-44">
       <p className="text-xs font-semibold tracking-wide">{period}</p>
       {range ? <p className="text-[11px] text-white/70 mt-1">{range}</p> : null}
       <p className="text-lg font-bold mt-2">{count.toLocaleString()} orders</p>
@@ -43,13 +43,13 @@ export const OrderTimeChart: React.FC<OrderTimeChartProps> = ({ data }) => {
   }));
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+    <div className="bg-white rounded-2xl p-6  ">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h3 className="text-gray-900 font-semibold">Order Time</h3>
+          <h3 className="text-black text-[14px]">Order Time</h3>
           <p className="text-xs text-gray-500 mt-1">From 1-6 Dec, 2020</p>
         </div>
-        <button className="text-xs font-medium text-indigo-600 hover:text-indigo-700 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-white">
+        <button className="text-[12px] text-primary-active-text font-medium bg-button-bg border-button-border rounded-[5px] h-8 w-27.25 text-center hover:bg-white border-[0.5px] hover:border-gray-300 transition-colors cursor-pointer px-3 py-1.5">
           View Report
         </button>
       </div>
@@ -83,15 +83,17 @@ export const OrderTimeChart: React.FC<OrderTimeChartProps> = ({ data }) => {
           </ResponsiveContainer>
         </div>
 
-        <div className="w-full mt-2 flex items-center justify-center gap-8">
+        <div className="w-full mt-2 flex items-center justify-center gap-5">
           {data.map((item, index) => (
-            <div key={item.period} className="flex items-center gap-2">
-              <span
-                className="w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: colors[index] }}
-              />
-              <span className="text-xs font-medium text-slate-600">
-                {item.period}
+            <div key={item.period} className="flex flex-col items-center gap-2">
+              <span className="flex items-center gap-2">
+                <span
+                  className="w-2.5 h-2.5 rounded-full"
+                  style={{ backgroundColor: colors[index] }}
+                />
+                <span className="text-xs font-medium text-slate-600">
+                  {item.period}
+                </span>
               </span>
               <span className="text-xs text-slate-400">{item.percentage}%</span>
             </div>
