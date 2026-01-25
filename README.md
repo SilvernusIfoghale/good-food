@@ -2,10 +2,6 @@
 
 A sophisticated, responsive dashboard application built for food enterprise management. This platform provides real-time insights into sales performance, customer ordering habits, and product popularity.
 
-## Screenshot 1
-![# s# 1](https://github.com/user-attachments/assets/984e13cb-dfad-4970-90fb-19abe004d17b)
-
-
 ## 🚀 Overview
 
 Good Food Dashboard is designed to help restaurant owners and managers monitor their business metrics through an intuitive and clean user interface. It features interactive data visualizations for revenue tracking, peak order times, and customer satisfaction.
